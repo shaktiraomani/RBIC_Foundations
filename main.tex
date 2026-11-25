@@ -1,0 +1,379 @@
+%% Physics of the Dark Universe Submission
+%% Elsevier elsarticle format
+%%
+%% Manuscript: Relativistic Bose Interval Cosmology: Foundations, Vacuum Thermodynamics, and Observational Synthesis
+%% Author: Shakti Rao Mani
+
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{bm}
+
+\journal{Physics of the Dark Universe}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Relativistic Bose Interval Cosmology: Foundations, Vacuum Thermodynamics, and Observational Synthesis}
+
+\author{Shakti Rao Mani\corref{cor1}}
+\ead{shaktimanibhu@gmail.com}
+\ead[url]{https://orcid.org/0009-0005-6066-8584}
+\cortext[cor1]{Corresponding author}
+
+\affiliation{organization={School of Sciences, Indira Gandhi National Open University},
+            addressline={Maidan Garhi},
+            city={New Delhi},
+            postcode={110068},
+            country={India}}
+
+\begin{abstract}
+We present the foundational framework of Relativistic Bose Interval Cosmology (RBIC), synthesizing Modified Measure Theory (MMT) with an ultralight Bose-Einstein Condensate (BEC) dark sector and horizon-condensate thermodynamics. Identifying the dimensionless MMT measure-to-metric ratio $\chi \equiv \Phi/\sqrt{-g}$ with the normalized condensate density $|\Psi_I|^2/\rho_0$ yields an effective Weyl-type conformal coupling and a non-singular bounce scale $\ell_{\rm bounce}$ from the quantum-torsional Raychaudhuri identity. Coupling the apparent horizon energy $\hbar H(z)$ to the condensate bath motivates a Boltzmann damping factor $\exp[-\xi_{\rm RB}(E-1)]$ that shuts off the dark energy modulation at early times while recovering flat $\Lambda$CDM identically in the limit $(\gamma_T, \xi_{\rm RB}) \to (0,0)$. We test the resulting effective Friedmann parameterization against Cosmic Chronometers, DESI DR2 BAO, Planck 2018 distance priors, SDSS DR16 $f\sigma_8$, and Pantheon+, DES-SN5YR, and Union3 supernovae. Relative to $\Lambda$CDM, full RBIC ($k=6$) achieves $\Delta\mathrm{AIC} = -4.82$ to $-8.92$ ($\Delta\mathrm{BIC} = +5.99, +4.36, -4.31$), comparable to $w_0w_a$CDM, while the calibrated one-parameter branch ($\gamma_T = 1.20\,\xi_{\rm RB}$, $k=5$) yields $\Delta\mathrm{AIC} = -6.82$ to $-10.05$ and $\Delta\mathrm{BIC} = -1.41, -3.17, -7.74$ (vs.\ $w$CDM $\Delta\mathrm{BIC} = +6.57, +6.01, +3.47$). A 4-bin KiDS-Legacy DR5 cell shear variance check places a lower bound $k_\star \gtrsim 0.35\;h\,\mathrm{Mpc}^{-1}$ ($>2.9\sigma$ for $k_\star \le 0.25\;h\,\mathrm{Mpc}^{-1}$) while remaining consistent with free-$\sigma_8$ $\Lambda$CDM ($\chi^2 = 1.12$).
+\end{abstract}
+
+%% Research highlights (each <= 85 chars)
+\begin{highlights}
+\item Unifies MMT measure ratio with an ultralight BEC dark sector condensate.
+\item Horizon-condensate Boltzmann damping recovers flat LCDM as an exact limit.
+\item Calibrated RBIC-1p beats LCDM, wCDM, and w0waCDM in BIC across 3 SN suites.
+\item KiDS-Legacy DR5 shear variance bounds Jeans cutoff k* >= 0.35 h/Mpc.
+\end{highlights}
+
+%% Keywords
+\begin{keyword}
+Modified measure theory \sep Bose-Einstein condensate \sep Dynamical dark energy \sep MCMC cosmology \sep DESI DR2 \sep Weak gravitational lensing
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+\label{sec:intro}
+
+The $\Lambda$CDM model of cosmology remains the most observationally successful paradigm describing the evolution of the universe at the background level. However, as observational precision has tightened into the sub-percent regime, significant empirical anomalies have emerged—most notably the Hubble tension ($H_0$) \cite{DiValentino2021}, the growth-of-structure tension ($S_8$) \cite{Moresco2022}, and hints of dynamical dark energy from recent DESI BAO measurements \cite{DESI2024, DESI2025_DR2}—alongside the longstanding cosmological constant and coincidence problems \cite{Weinberg1989}.
+
+Modified Measure Theory (MMT), pioneered by Guendelman et al.~\cite{Guendelman1999} and generalized by Sur \cite{Sur2019, Sur2021}, replaces the standard volume element $\sqrt{-g}\,d^4x$ with a dynamical measure $\Phi\,d^4x$ constructed from four auxiliary scalar fields $\varphi^a$. This decouples bare vacuum energy from spacetime curvature, naturally inducing dynamical dark energy and non-Riemannian connection shifts \cite{Hehl1976}. However, the physical origin of the measure degrees of freedom in MMT has historically remained phenomenological.
+
+Concurrently, the dark sector is increasingly modeled using ultralight scalar fields ($m \sim 10^{-25}\text{--}10^{-22}$~eV), such as Fuzzy Dark Matter \cite{Hu2000} or axionic dark matter \cite{Sikivie2009}, which form a macroscopic Bose-Einstein Condensate (BEC) described by a complex wavefunction $\Psi_I$. In this foundational paper, we propose an effective cosmological identification between the dimensionless MMT measure-to-metric scalar ratio $\chi \equiv \Phi/\sqrt{-g}$ and the normalized condensate density $|\Psi_I|^2/\rho_0$.
+
+Recent advances in Poincar\'e gauge theory and BEC dark matter numerics provide complementary context. Bahamonde and Valcarcel \cite{2603.19140} and Cvetkovi\'c et al.~\cite{2511.15106} explored torsion couplings around rotating black holes, while Koivisto et al.~\cite{Koivisto2026} studied Spin(4) gauge-theoretic unification with a Cartan khronon field. On the dark matter side, Gross-Pitaevskii-Poisson (GPP) simulations by Alvarez-Rios et al.~\cite{2506.17535} and Sivakumar et al.~\cite{2603.18880} demonstrate that BECDM vortex lines and quantum pressure modes imprint on baryonic structures, sharing the same Madelung hydrodynamic structure as the BEC sector in our action.
+
+In this work, we: (i) formulate the MMT--BEC action and clarify the conformal/Weyl nature of its scalar-sourced connection; (ii) derive the quantum-torsional Raychaudhuri identity and high-density bounce scale $\ell_{\rm bounce}$; (iii) motivate a horizon-condensate Boltzmann damping factor for late-time dark energy activation while preserving $\Lambda$CDM as an exact limit; and (iv) confront the resulting effective background parameterization against 2025--2026 multi-probe MCMC data (CC, DESI DR2, Planck 2018, SDSS $f\sigma_8$, Pantheon+, DES-SN5YR, Union3) and a 4-bin KiDS-Legacy DR5 shear variance check.
+
+\section{The Unified MMT-BEC Action}
+\label{sec:action}
+
+We construct the action on a four-dimensional pseudo-Riemannian manifold with metric $g_{\mu\nu}$ and an independent affine connection $\Gamma^\lambda_{\mu\nu}$ in the Palatini formalism. Following standard MMT \cite{Guendelman1999, Sur2021}, the dynamical volume measure $\Phi$ is a genuine scalar density of weight $+1$ built from four auxiliary measure scalars $\varphi^a$ ($a=0,1,2,3$):
+\begin{equation}
+    \Phi = \varepsilon^{\mu\nu\alpha\beta}\varepsilon_{abcd}\,\partial_\mu\varphi^a\,\partial_\nu\varphi^b\,\partial_\alpha\varphi^c\,\partial_\beta\varphi^d.
+    \label{eq:phi_def}
+\end{equation}
+Let the macroscopic wavefunction of the cosmological BEC be a complex scalar field $\Psi_I$. The unified action is:
+\begin{align}
+    S &= \int \Phi \left[ \frac{1}{2\kappa^2} R(g,\Gamma) + L_{m} \right] d^4x \nonumber \\
+      &\quad + \int \sqrt{-g} \left[ -g^{\mu\nu}(\partial_\mu \Psi_I^*)(\partial_\nu \Psi_I) - V(|\Psi_I|) - \frac{\lambda_I}{4}|\Psi_I|^4 \right] d^4x,
+    \label{eq:action}
+\end{align}
+where $\kappa^2 = 8\pi G$ and $R(g,\Gamma)$ is the Palatini Ricci scalar. Because $\Phi$ is a scalar density while $|\Psi_I|^2$ is a true scalar, a generally covariant identification must relate the dimensionless scalar ratio $\chi \equiv \Phi/\sqrt{-g}$ to the normalized condensate density:
+\begin{equation}
+    \chi \equiv \frac{\Phi}{\sqrt{-g}} = \frac{|\Psi_I|^2}{\rho_0},
+    \label{eq:chi_def}
+\end{equation}
+where $\rho_0$ is a constant reference density scale. This preserves general covariance while coupling the conformal measure ratio $\chi$ directly to the BEC density.
+
+\section{Field Equations and Conformal Connection Structure}
+\label{sec:field_eqs}
+
+Varying Eq.~\eqref{eq:action} with respect to the independent connection $\Gamma^\lambda_{\mu\nu}$ yields the metricity-type constraint:
+\begin{equation}
+    \nabla^{(\Gamma)}_\lambda \left(\Phi\, g^{\mu\nu}\right) = 0.
+    \label{eq:conn_constraint}
+\end{equation}
+In the metric-compatible (torsion-free) Palatini gauge, Eq.~\eqref{eq:conn_constraint} identifies $\Gamma^\lambda_{\mu\nu}$ with the Levi-Civita connection $\tilde{\Gamma}^\lambda_{\mu\nu}(\tilde{g})$ of the conformally rescaled auxiliary metric $\tilde{g}_{\mu\nu} = \chi\,g_{\mu\nu}$. Equivalently, if one exploits the projective invariance of $R(g,\Gamma)$ or expresses $\tilde{\Gamma}^\lambda_{\mu\nu}$ in the $g_{\mu\nu}$ frame, the connection shift relative to the Levi-Civita connection of $g_{\mu\nu}$ takes the Weyl/contorsion form:
+\begin{equation}
+    \Gamma^\lambda_{\mu\nu} = \tilde{\Gamma}^\lambda_{\mu\nu}(\tilde{g}) + K^\lambda_{\mu\nu},
+    \label{eq:gamma_split}
+\end{equation}
+where the contorsion tensor is
+\begin{equation}
+    K^\lambda_{\ \mu\nu} = \frac{1}{2}\left(\delta^\lambda_\mu \partial_\nu \ln\chi - \delta^\lambda_\nu \partial_\mu \ln\chi + g^{\lambda\sigma}g_{\mu\rho}\,\partial_\sigma\ln\chi\,g^\rho_\nu\right),
+    \label{eq:contorsion_def}
+\end{equation}
+and the resulting pure-gradient vector torsion $T^\lambda_{\ \mu\nu} = K^\lambda_{\ \mu\nu} - K^\lambda_{\ \nu\mu} = \delta^\lambda_\mu \partial_\nu \ln\chi - \delta^\lambda_\nu \partial_\mu \ln\chi$ (trace $T_\mu \propto \partial_\mu \ln\chi$) is curl-free. We emphasize that in a purely scalar MMT sector, this gradient torsion is kinematically equivalent to a conformal/Weyl frame transformation rather than an independent propagating axial torsion mode (which requires spin-$1^+$ gauge fields as in Poincar\'e gauge theory).
+
+Varying Eq.~\eqref{eq:action} with respect to the physical metric $g_{\mu\nu}$ yields:
+\begin{equation}
+    \Phi\, G_{\mu\nu}(\Gamma) = \kappa^2 \left[ \Phi\, T^{(m)}_{\mu\nu} + \sqrt{-g}\, T^{\rm (BEC)}_{\mu\nu} \right].
+    \label{eq:einstein_phi}
+\end{equation}
+Dividing Eq.~\eqref{eq:einstein_phi} by $\Phi = \chi\sqrt{-g}$ gives the effective field equations in the physical frame:
+\begin{equation}
+    G_{\mu\nu}(\Gamma) = \kappa^2 \left[ T^{(m)}_{\mu\nu} + \chi^{-1} T^{\rm (BEC)}_{\mu\nu} \right],
+    \label{eq:einstein_phys}
+\end{equation}
+where the scalar ratio $\chi = \Phi/\sqrt{-g}$ modulates the effective gravitational coupling to the BEC stress-energy tensor.
+
+\section{Quantum-Torsional Raychaudhuri Equation and Bounce Scale}
+\label{sec:raychaudhuri}
+
+\subsection{Madelung Representation and Timelike Congruence}
+Expressing the complex condensate wavefunction in Madelung polar form,
+\begin{equation}
+    \Psi_I(x) = \sqrt{\rho_{\rm BEC}(x)}\, e^{iS(x)/\hbar},
+    \label{eq:madelung}
+\end{equation}
+where $S(x)$ has dimensions of action ($\hbar$), the coherent four-velocity field of the condensate fluid is $u_\mu = -\partial_\mu S / m_{\rm eff}$, normalized to $u_\mu u^\mu = -1$ (in units $c=1$), with $m_{\rm eff}$ the effective condensate mass scale. Variation of the BEC sector yields the relativistic Madelung-Euler equation with quantum four-acceleration orthogonal to $u^\mu$ ($u_\mu a^\mu = 0$):
+\begin{equation}
+    a_\mu \equiv u^\nu \nabla_\nu u_\mu = -\frac{1}{m_{\rm eff}} h^\nu_\mu \partial_\nu Q, \qquad
+    Q \equiv -\frac{\hbar^2}{2m_{\rm eff}} \frac{\Box \sqrt{\rho_{\rm BEC}}}{\sqrt{\rho_{\rm BEC}}},
+    \label{eq:qpot}
+\end{equation}
+where $h_{\mu\nu} = g_{\mu\nu} + u_\mu u_\nu$ is the spatial projection tensor and $Q$ is the relativistic Bohmian quantum potential \cite{Das2014}.
+
+\subsection{Metric-Affine Ricci Identity with Gradient Torsion}
+In the presence of the non-Riemannian connection $\Gamma^\lambda_{\mu\nu}$ from Sec.~\ref{sec:field_eqs}, the covariant derivative $\nabla^{(\Gamma)}_\mu$ acts on $u^\lambda$ via the geometric Ricci identity \cite{Hehl1976, KarSenGupta2007}:
+\begin{equation}
+    \left(\nabla^{(\Gamma)}_\mu \nabla^{(\Gamma)}_\nu - \nabla^{(\Gamma)}_\nu \nabla^{(\Gamma)}_\mu\right) u^\lambda = R^\lambda_{\ \sigma\mu\nu}(\Gamma) u^\sigma - T^\sigma_{\ \mu\nu} \nabla^{(\Gamma)}_\sigma u^\lambda.
+    \label{eq:ricci_id}
+\end{equation}
+Decomposing $B_{\mu\nu} \equiv \nabla^{(\Gamma)}_\nu u_\mu = \frac{1}{3}\theta h_{\mu\nu} + \sigma_{\mu\nu} + \omega_{\mu\nu} - a_\mu u_\nu + K^\lambda_{\ \mu\nu}u_\lambda$, contracting with $u^\nu$, and taking the trace yields the MMT-BEC Raychaudhuri equation:
+\begin{equation}
+    \frac{d\theta}{d\tau} = -\frac{1}{3}\theta^2 - 2\sigma^2 + 2\omega^2 - R_{\mu\nu}(\Gamma)u^\mu u^\nu + \nabla_\mu a^\mu + \mathcal{T}_{\rm MMT},
+    \label{eq:raychaudhuri_mmt}
+\end{equation}
+where $\sigma^2 \equiv \frac{1}{2}\sigma_{\mu\nu}\sigma^{\mu\nu}$, $\omega^2 \equiv \frac{1}{2}\omega_{\mu\nu}\omega^{\mu\nu}$, $\nabla_\mu a^\mu = -\frac{1}{m_{\rm eff}}\nabla_\mu(h^{\mu\nu}\partial_\nu Q)$, and $\mathcal{T}_{\rm MMT}$ collects the gradient-torsion/contorsion focusing terms:
+\begin{equation}
+    \mathcal{T}_{\rm MMT} = \frac{2}{3}\theta\, u^\nu \partial_\nu \ln\chi + \frac{1}{2}(\partial_\mu\ln\chi)(\partial^\mu\ln\chi) - (u^\mu\partial_\mu\ln\chi)^2 + \nabla_\mu(h^{\mu\nu}\partial_\nu\ln\chi).
+    \label{eq:t_mmt}
+\end{equation}
+Note that $\mathcal{T}_{\rm MMT}$ contains sign-indefinite gradient terms and is not universally positive; its net sign depends on the local evolution of $\chi$.
+
+\subsection{High-Density Bounce Scale vs.\ Cosmological Jeans Scale}
+In classical GR ($\chi=\mathrm{const}$, $\hbar\to 0$), $R_{\mu\nu}u^\mu u^\nu \ge 0$ drives a collapsing congruence ($\theta < 0$) to a caustic singularity. In the BEC sector, near a critical compression density $\rho_{\rm crit}$ over a correlation scale $\ell$, the quantum pressure divergence $\nabla_\mu a^\mu \sim +\hbar^2/(m_{\rm eff}^2 \ell^4) > 0$ can halt collapse at a turning point $\theta(\tau_b) = 0$, $d\theta/d\tau|_{\tau_b} > 0$. Balancing $R_{\mu\nu}u^\mu u^\nu \sim 4\pi G \rho_{\rm crit}$ against quantum pressure fixes a microscopic bounce scale:
+\begin{equation}
+    \ell_{\rm bounce} \sim \left(\frac{\hbar^2}{G m_{\rm eff}^3 \rho_{\rm crit}}\right)^{1/4}.
+    \label{eq:bounce_scale}
+\end{equation}
+We distinguish $\ell_{\rm bounce}$ (a high-density, early-universe/compact-object scale) from the present-day cosmological Jeans coherence scale $\lambda_J = 2\pi/k_\star \sim \mathcal{O}(10\text{--}20)$~Mpc evaluated at the cosmic background density $\rho_m(z=0)$.
+
+\section{Horizon-Condensate Thermodynamics and Late-Time Activation}
+\label{sec:thermo}
+
+The cosmological apparent horizon has an associated Gibbons-Hawking energy scale $E_H = \hbar H(z)$, while the cold BEC bath has a characteristic critical temperature $T_c = M_*/(\pi^2 k_B)$ (in natural units $\hbar = c = 1$), governed by an effective mass scale $M_*$. Treating the horizon-condensate coupling via canonical Boltzmann weighting gives a suppression factor:
+\begin{equation}
+    P(z) \propto \exp\!\left(-\frac{E_H}{k_B T_c}\right) = \exp\!\left(-\frac{\pi^2 \hbar H(z)}{M_*}\right).
+    \label{eq:boltzmann}
+\end{equation}
+Defining the dimensionless Boltzmann coupling $\xi_{\rm RB} \equiv \pi^2 \hbar H_0 / M_* \equiv \pi^2 / M_{\rm ratio}$ and normalized expansion rate $E(z) \equiv H(z)/H_0$, the normalized modulation factor is:
+\begin{equation}
+    \frac{\mathcal{B}_{\rm RB}(z)}{\mathcal{B}_{\rm RB}(0)} = \exp\!\left\{-\xi_{\rm RB}\left[E(z)-1\right]\right\}.
+    \label{eq:brb_norm}
+\end{equation}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.85\textwidth]{thermo_regularization.png}
+    \caption{Schematic illustration of thermal Boltzmann damping vs.\ polynomial UV growth: the exponential factor $\exp(-E_H / k_B T_c)$ suppresses high-energy modes ($E_H \gg k_B T_c$) relative to power-law growth.}
+    \label{fig:thermo_reg}
+\end{figure}
+
+\subsection*{Scope of the Thermodynamic Mechanism}
+We state clearly what Eq.~\eqref{eq:brb_norm} does and does not solve. At $z=0$ ($E(0)=1$), $\exp[-\xi_{\rm RB}(E(0)-1)] = 1$, so the present-day dark energy density fraction $\Omega_{\rm DE,eff}(0) = 1 - \Omega_m - \Omega_r \approx 0.687$ is fixed by spatial flatness—not derived ab initio from $T_c^4$ (indeed, $T_c \sim M_*/k_B \sim 3\times 10^{-32}$~eV yields $T_c^4 \sim 10^{-125}\;\mathrm{eV}^4$, far below the observed $\rho_\Lambda \sim (2.3\;\mathrm{meV})^4 \sim 10^{-11}\;\mathrm{eV}^4$). Thus, this mechanism does not resolve the $10^{120}$ bare cosmological constant problem. Rather, it provides a \textbf{late-time dynamical activation mechanism}: at high redshift ($z \gg 1$, e.g.\ recombination $E(z_*) \sim 2\times 10^4$), $\exp[-\xi_{\rm RB}(E-1)] \to 0$ shuts off the dark energy modulation, preserving standard Big Bang Nucleosynthesis and CMB acoustic physics, and activates dynamically only as $H(z) \to H_0$.
+
+\subsection*{Theoretical Robustness}
+In a self-interacting condensate, any interaction-induced shift in the effective critical temperature ($T_c \to T_c + \delta T_c$) is absorbed into the dimensionless phenomenological coupling $\xi_{\rm RB} \equiv \pi^2\hbar H_0/M_*$ fitted in cosmological MCMC analyses ($\xi_{\rm RB} \approx 0.49\text{--}0.54$, $M_{\rm ratio} \approx 18\text{--}20$).
+
+\section{Effective Friedmann Evolution and Analytical Phantom Crossing}
+\label{sec:friedmann}
+
+Because $\mathcal{B}_{\rm RB}(z)$ is an explicit function of $H(z)$ rather than a local covariant field, it cannot be varied inside a local action with respect to $g_{\mu\nu}$ to derive background equations rigorously. Instead, motivated by the MMT conformal mismatch $\chi(z)$ and the horizon-condensate damping factor Eq.~\eqref{eq:brb_norm}, we adopt the phenomenological effective dimensionless Friedmann equation ($E(z) \equiv H(z)/H_0$):
+\begin{equation}
+    E^2(z) = \Omega_m (1+z)^3 + \Omega_r (1+z)^4 + \Omega_{\Lambda 0} (1+z)^{\gamma_T} \exp\!\left[-\xi_{\rm RB}\left(E(z) - 1\right)\right],
+    \label{eq:friedmann}
+\end{equation}
+where $\Omega_{\Lambda 0} \equiv 1 - \Omega_m - \Omega_r$, $\Omega_r = \Omega_m/(1+z_{\rm eq})$, $\gamma_T$ parameterizes an effective power-law measure scaling $\chi(z) \propto (1+z)^{-\gamma_T}$, and $\xi_{\rm RB} \ge 0$ governs Boltzmann horizon damping. Equation~\eqref{eq:friedmann} satisfies $E(0) = 1$ identically.
+
+\subsection*{Comparison with Running Vacuum and Holographic Dark Energy}
+Equation~\eqref{eq:friedmann} belongs to the broader class of $H$-dependent dynamical dark energy parameterizations, notably Running Vacuum Models (RVM) where $\rho_{\rm vac}(H) = c_0 + \nu H^2$ \cite{Sola2018}, and Holographic Dark Energy (HDE) models tied to the future event or apparent horizon \cite{Li2004, Wang2017}. Three features distinguish the RBIC framework:
+\begin{enumerate}
+    \item \textbf{Geometric--Condensate Unification:} The measure-to-metric ratio $\chi = |\Psi_I|^2/\rho_0$ links the MMT conformal degree of freedom to an ultralight BEC dark sector, yielding both a high-density Raychaudhuri bounce scale $\ell_{\rm bounce}$ and a cosmological Jeans scale $\lambda_J$.
+    \item \textbf{Exponential Horizon Activation:} Whereas polynomial $\nu H^2$ RVM terms modify early-time expansion unless $\nu \ll 1$, the Boltzmann factor $\exp[-\xi_{\rm RB}(E-1)]$ shuts off exponentially at $z \gg 1$ ($E \gg 1$) while preserving flat $\Lambda$CDM identically at $(\gamma_T, \xi_{\rm RB}) = (0,0)$.
+    \item \textbf{Joint Background and Small-Scale Confrontation:} The same framework predicts phantom crossing at $z_{\rm ph} \approx 0.51$ tested against DESI DR2 + SN suites alongside a small-scale Jeans cutoff $k_\star$ constrained directly with KiDS-Legacy DR5 shear variance.
+\end{enumerate}
+
+\subsection{Analytical Phantom Crossing and the $\gamma_T / \xi_{\rm RB}$ Relation}
+Denoting $\Omega_{\rm DE,eff}(z) \equiv \Omega_{\Lambda 0}(1+z)^{\gamma_T}\exp[-\xi_{\rm RB}(E(z)-1)]$, covariant conservation $\dot{\rho}_{\rm DE} + 3H(1+w_{\rm eff})\rho_{\rm DE} = 0$ yields the exact effective equation of state:
+\begin{align}
+    w_{\rm eff}(z) &= -1 + \frac{1+z}{3}\frac{d\ln \Omega_{\rm DE,eff}}{dz} \nonumber \\
+                   &= -1 + \frac{1}{3}\left[\gamma_T - \xi_{\rm RB}(1+z)\frac{dE}{dz}\right].
+    \label{eq:weff_rbic}
+\end{align}
+Setting $w_{\rm eff}(z_{\rm ph}) = -1$ gives the analytical phantom-crossing condition:
+\begin{equation}
+    (1+z)\frac{dE}{dz}\Bigg|_{z_{\rm ph}} = \frac{\gamma_T}{\xi_{\rm RB}}.
+    \label{eq:phantom_crossing}
+\end{equation}
+Because $(1+z)dE/dz$ rises monotonically from $\approx 0.47$ at $z=0$ to $\approx 1.19$ at $z \approx 0.50$ (for $\Omega_m \approx 0.312$), calibrating $\gamma_T / \xi_{\rm RB} = 1.20$ places the exact crossing of the best-fit $E(z)$ at $z_{\rm ph} = 0.512$ (Pantheon+) and $0.511$ (DES-SN5YR), transitioning smoothly from $w_{\rm eff}(0) \approx -0.88 > -1$ to $w_{\rm eff} < -1$ at intermediate redshift. We evaluate both the unconstrained two-parameter RBIC parameterization ($\gamma_T, \xi_{\rm RB}$ free, $k=6$) and the calibrated one-parameter branch $\gamma_T = 1.20\,\xi_{\rm RB}$ ($\mathrm{RBIC}_{1p}$, nominally $k=5$, though we note that fixing the ratio $1.20$ was motivated by DESI-era crossing around $z_{\rm ph} \approx 0.51$). Full perturbative ghost/gradient stability of the effective phantom phase is left to future perturbation-level analysis.
+
+\section{Observational Validation via Multi-Probe MCMC}
+\label{sec:mcmc}
+
+\subsection{Datasets and Joint Likelihood}
+We construct a joint Gaussian likelihood across five independent observational probes (using real data only, no mocks):
+\begin{enumerate}
+    \item \textbf{Cosmic Chronometers (CC):} 32 differential galaxy age $H(z)$ measurements ($0.07 \le z \le 1.965$) \cite{Moresco2022}.
+    \item \textbf{DESI DR2 BAO:} 13 distance ratios ($D_M/r_d$, $D_H/r_d$, $D_V/r_d$) across $0.295 \le z \le 2.330$ with the full $13\times 13$ covariance matrix \cite{DESI2025_DR2}, using early-$E(z)$ sound-horizon scaling.
+    \item \textbf{Planck 2018 CMB Distance Priors:} Compressed geometric likelihood over $R = 1.7502 \pm 0.0046$, $\ell_a = 301.471 \pm 0.090$, and $\omega_b = 0.02236 \pm 0.00015$ \cite{Planck2020, Chen2019}.
+    \item \textbf{SDSS DR16 Growth Rate ($f\sigma_8$):} 4 eBOSS LRG/QSO measurements ($z \in [0.38, 1.48]$) \cite{Alam2021}, evaluated via the standard linear GR growth ODE $D'' + (3/a + E'/E)D' - \frac{3}{2}\Omega_m D/(a^5 E^2) = 0$ on the RBIC background $E(z)$.
+    \item \textbf{Type Ia Supernovae (Three Suites):} Analytically marginalized over $M_B$: (i) \textbf{Pantheon+} ($z>0.01$, $N_{\rm SN}=1590$, $N_{\rm tot}=1642$) \cite{Brout2022}; (ii) \textbf{DES-SN5YR} Dovekie release ($N_{\rm SN}=1820$, $N_{\rm tot}=1872$) \cite{Vincenzi2024}; and (iii) \textbf{Union3} UNITY compressed likelihood (22 nodes, $N_{\rm tot}=74$) \cite{Rubin2025}.
+\end{enumerate}
+
+\subsection{Parameter Estimation and Model Selection}
+We sample the posterior using \texttt{emcee} \cite{Foreman-Mackey2013} (32 walkers, 700 burn-in + 2000 production steps, acceptance fractions $0.474\text{--}0.594$) with flat uniform priors over the four baseline cosmological parameters $H_0 \in [55, 85]\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$, $\Omega_m \in [0.15, 0.50]$, $\omega_b \equiv \Omega_b h^2 \in [0.018, 0.026]$, and $\sigma_8 \in [0.60, 1.00]$, plus $\gamma_T \in [-2.0, 5.0]$ and $\xi_{\rm RB} \in [0.0, 5.0]$ (with $r_d$ derived from $(H_0,\Omega_m,\omega_b)$ via the early-$E(z)$ sound-horizon integral scaling rather than sampled independently). Maximum-likelihood minima are verified with a multi-start Nelder--Mead/Powell optimizer. Table~\ref{tab:mcmc_results} summarizes the fits and information criteria ($\Delta\mathrm{AIC} = \Delta\chi^2 + 2\Delta k$, $\Delta\mathrm{BIC} = \Delta\chi^2 + \Delta k\ln N$), including $w$CDM ($k=5$) alongside $\Lambda$CDM ($k=4$) and $w_0w_a$CDM ($k=6$).
+
+\begin{table}[t]
+\centering
+\caption{Joint multi-probe statistical comparison across Cosmic Chronometers, DESI DR2 BAO, Planck 2018 distance priors, SDSS $f\sigma_8$, and three Type Ia supernova compilations.}
+\label{tab:mcmc_results}
+\resizebox{\textwidth}{!}{\begin{tabular}{llcccccccc}
+\toprule
+\textbf{SN Suite} & \textbf{Model} & $k$ & $\chi^2_{\min}$ & $\Delta\chi^2$ & $\Delta\mathrm{AIC}$ & $\Delta\mathrm{BIC}$ & $H_0\;[\mathrm{km/s/Mpc}]$ & $\Omega_m$ & $S_8$ \\
+\midrule
+Pantheon+ ($N=1642$) & $\Lambda$CDM & 4 & 1438.26 & $0.00$ & $0.00$ & $0.00$ & $68.35^{+0.26}_{-0.27}$ & $0.3023^{+0.0038}_{-0.0036}$ & $0.861 \pm 0.043$ \\
+                     & $w$CDM ($w_0=-0.978$) & 5 & 1437.43 & $-0.84$ & $+1.16$ & $+6.57$ & $67.85$ & $0.3057$ & $0.865$ \\
+                     & $w_0 w_a$CDM & 6 & 1431.05 & $-7.21$ & $-3.21$ & $+7.60$ & $67.65^{+0.59}_{-0.61}$ & $0.3118^{+0.0059}_{-0.0056}$ & $0.872^{+0.043}_{-0.045}$ \\
+                     & RBIC ($k=6$) & 6 & 1429.44 & $-8.82$ & $-4.82$ & $+5.99$ & $67.72^{+0.57}_{-0.59}$ & $0.3129 \pm 0.0057$ & $0.872 \pm 0.044$ \\
+                     & $\mathrm{RBIC}_{1p}$ ($\gamma_T = 1.2\xi_{\rm RB}$) & 5 & 1429.44 & $-8.82$ & $\mathbf{-6.82}$ & $\mathbf{-1.41}$ & $67.67^{+0.35}_{-0.34}$ & $0.3129 \pm 0.0050$ & $0.873 \pm 0.045$ \\
+\midrule
+DES-SN5YR ($N=1872$) & $\Lambda$CDM & 4 & 1667.54 & $0.00$ & $0.00$ & $0.00$ & $68.30$ & $0.3030$ & $0.859$ \\
+                     & $w$CDM ($w_0=-0.972$) & 5 & 1666.01 & $-1.53$ & $+0.47$ & $+6.01$ & $67.71$ & $0.3067$ & $0.867$ \\
+                     & $w_0 w_a$CDM & 6 & 1657.22 & $-10.32$ & $-6.32$ & $+4.75$ & $67.48$ & $0.3135$ & $0.874$ \\
+                     & RBIC ($k=6$) & 6 & 1656.83 & $-10.71$ & $-6.71$ & $+4.36$ & $67.71^{+0.52}_{-0.50}$ & $0.3132 \pm 0.0051$ & $0.873 \pm 0.044$ \\
+                     & $\mathrm{RBIC}_{1p}$ ($\gamma_T = 1.2\xi_{\rm RB}$) & 5 & 1656.83 & $-10.71$ & $\mathbf{-8.71}$ & $\mathbf{-3.17}$ & $67.69$ & $0.3128$ & $0.874$ \\
+\midrule
+Union3 ($N=74$)      & $\Lambda$CDM & 4 & 60.91 & $0.00$ & $0.00$ & $0.00$ & $68.34$ & $0.3024$ & $0.858$ \\
+                     & $w$CDM ($w_0=-0.974$) & 5 & 60.08 & $-0.83$ & $+1.17$ & $+3.47$ & $67.74$ & $0.3065$ & $0.867$ \\
+                     & $w_0 w_a$CDM & 6 & 47.59 & $-13.33$ & $-9.33$ & $-4.72$ & $66.13$ & $0.3270$ & $0.896$ \\
+                     & RBIC ($k=6$) & 6 & 47.99 & $-12.92$ & $-8.92$ & $-4.31$ & $66.60^{+0.76}_{-0.74}$ & $0.3247^{+0.0080}_{-0.0081}$ & $0.892^{+0.047}_{-0.045}$ \\
+                     & $\mathrm{RBIC}_{1p}$ ($\gamma_T = 1.2\xi_{\rm RB}$) & 5 & 48.87 & $-12.05$ & $\mathbf{-10.05}$ & $\mathbf{-7.74}$ & $67.29$ & $0.3183$ & $0.882$ \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Across all three supernova compilations, the unconstrained RBIC posteriors yield:
+\begin{itemize}
+    \item \textbf{Pantheon+:} $\gamma_T = 0.664^{+0.290}_{-0.246}$, $\xi_{\rm RB} = 0.554^{+0.275}_{-0.210}$ ($\gamma_T/\xi_{\rm RB} = 1.18^{+0.21}_{-0.17}$);
+    \item \textbf{DES-SN5YR:} $\gamma_T = 0.749^{+0.313}_{-0.265}$, $\xi_{\rm RB} = 0.642^{+0.310}_{-0.244}$ ($\gamma_T/\xi_{\rm RB} = 1.16^{+0.18}_{-0.14}$);
+    \item \textbf{Union3:} $\gamma_T = 1.271^{+0.614}_{-0.432}$, $\xi_{\rm RB} = 0.961^{+0.512}_{-0.346}$ ($\gamma_T/\xi_{\rm RB} = 1.31^{+0.18}_{-0.14}$).
+\end{itemize}
+Because the unconstrained 2-parameter global minimum naturally lies at $\gamma_T/\xi_{\rm RB} = 1.203$ (Pantheon+) and $1.202$ (DES-SN5YR), $\chi^2_{\min}$ for $\mathrm{RBIC}_{1p}$ matches full RBIC to $<0.01$ on those two suites (whereas on Union3 the unconstrained minimum shifts to $\gamma_T/\xi_{\rm RB} = 1.352$, giving $\Delta\chi^2 = -12.92$ vs.\ $-12.05$). We note transparently that full RBIC ($k=6$) has $\Delta\chi^2 = -8.82$ to $-12.92$—comparable to $w_0w_a$CDM ($\Delta\chi^2 = -7.21$ to $-13.33$)—and pays a BIC complexity penalty on Pantheon+ ($+5.99$) and DES-SN5YR ($+4.36$). Meanwhile, constant-$w$ $w$CDM ($k=5$) fails to capture the phantom crossing ($\Delta\chi^2 = -0.83$ to $-1.53$, $\Delta\mathrm{BIC} = +3.47$ to $+6.57$), whereas the calibrated $\mathrm{RBIC}_{1p}$ branch achieves $\Delta\mathrm{BIC} = -1.41, -3.17, -7.74$ (subject to the caveat that $1.20$ was calibrated to $z_{\rm ph} \approx 0.51$). Note also that $H_0 = 67.72 \pm 0.57\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$ remains consistent with Planck and does not resolve the local SH0ES Hubble tension, while the linear growth amplitude $S_{8,\rm lin} \approx 0.87$ motivates examining small-scale power suppression.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{rbic_mcmc_corner.png}
+    \caption{Joint \texttt{emcee} posterior distributions ($68\%$ and $95\%$ CL) for RBIC fitted to Cosmic Chronometers, DESI DR2 BAO, Planck 2018 distance priors, SDSS DR16 $f\sigma_8$, and Pantheon+.}
+    \label{fig:mcmc_corner}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{rbic_hz_fit.png}
+    \caption{Top: Comoving expansion rate $H(z)/(1+z)$ from RBIC vs.\ $\Lambda$CDM and $w_0 w_a$CDM, overlaid against Cosmic Chronometers \cite{Moresco2022} and DESI DR2 BAO $H(z)$ points \cite{DESI2025_DR2}. Bottom: Normalized DESI DR2 BAO distance ratios relative to $\Lambda$CDM.}
+    \label{fig:hz_fit}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{rbic_weff_phantom.png}
+    \caption{Effective dark energy equation of state $w_{\rm eff}(z)$ reconstructed from the RBIC MCMC chains, displaying a smooth transition from $w_{\rm eff}(0) \approx -0.88$ across $w = -1$ at $z_{\rm ph} \approx 0.49$ (posterior median; $z_{\rm ph} = 0.51$ at the maximum-likelihood best fit).}
+    \label{fig:weff_phantom}
+\end{figure}
+
+\subsection{Weak-Lensing Consistency Check with KiDS-Legacy DR5}
+\label{sec:kids}
+On small scales ($k > k_\star$), quantum pressure in the BEC sector motivates a phenomenological Jeans suppression ansatz $P_{\rm RBIC}(k,z) = P_{\rm CDM}(k,z)\,[1 + (k/k_\star)^2]^{-1}$. To test this against real weak-lensing data, we process $13.5 \times 10^6$ galaxies in tomographic bins 4--6 ($0.7 < z_{\rm phot} \le 2.0$, from the $40.9 \times 10^6$-galaxy unblinded KiDS-Legacy DR5 catalog \cite{Wright2025}) and measure the real-space aperture excess shear variance $\langle \gamma_{\rm ex}^2(\theta) \rangle$ at $\theta \in \{0.25^\circ, 0.50^\circ, 1.00^\circ, 2.00^\circ\}$ (yielding $(5.33 \pm 0.52)\times 10^{-5}$ at $\theta = 0.25^\circ$, $10.3\sigma$).
+
+Confronting these 4 bins via Limber projection (Fig.~\ref{fig:kids_shear}) yields two distinct conclusions:
+\begin{itemize}
+    \item \textbf{Free $\sigma_8$ (unbiased test):} Allowing $\sigma_8$ to vary freely, standard $\Lambda$CDM ($k_\star \to \infty$) achieves $\chi^2 = 1.12$ at $\sigma_8 = 0.775$ (compared to $\chi^2 = 5.10$ at $\sigma_8 = 0.815$, and consistent with the official KiDS-Legacy DR5 $S_8 = 0.815 \pm 0.018$). Thus, this 4-bin cell test does \emph{not} constitute an independent detection of $k_\star$ over $\Lambda$CDM; instead, it places a lower bound $k_\star \gtrsim 0.35\;h\,\mathrm{Mpc}^{-1}$ ($\lambda_J = 2\pi/k_\star \lesssim 18\;h^{-1}\mathrm{Mpc} \approx 26\;\mathrm{Mpc}$), since $k_\star \le 0.25\;h\,\mathrm{Mpc}^{-1}$ is disfavored at $\Delta\chi^2 \ge 8.6$ ($>2.9\sigma$, $99.7\%$ CL for 1 d.o.f.) even with $\sigma_8$ free, while $k_\star = 0.51\;h\,\mathrm{Mpc}^{-1}$ ($\lambda_J = 12.3\;h^{-1}\mathrm{Mpc} \approx 18\;\mathrm{Mpc}$) gives $\chi^2 = 3.19$ at $\sigma_8 = 0.850$.
+    \item \textbf{Conditional on $S_{8,\rm lin} = 0.873$:} Only if $\sigma_8$ is fixed to the background+RSD chain value ($S_{8,\rm lin} = 0.873$, $\sigma_8 = 0.855$) does unsuppressed CDM give $\chi^2 = 19.44$, whereas a cutoff $k_\star = 0.51\;h\,\mathrm{Mpc}^{-1}$ ($\lambda_J = 12.3\;h^{-1}\mathrm{Mpc} \approx 18\;\mathrm{Mpc}$) reduces this to $\chi^2 = 3.22$.
+\end{itemize}
+We note transparently that this 4-bin cell-variance check does not marginalize over baryonic feedback, intrinsic alignments, or a full analytical non-Gaussian covariance matrix. Furthermore, if the effective mass scale is $m_{\rm eff} \sim 10^{-25}\;\mathrm{eV}$, Lyman-$\alpha$ forest and galaxy-clustering bounds require either that the ultralight BEC constitutes a subdominant fraction of total dark matter or that repulsive self-interactions ($\lambda_I > 0$) shift the effective Jeans scale relative to free-particle Fuzzy Dark Matter.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.90\textwidth]{kids_shear_variance.png}
+    \caption{Left: Measured real-space excess shear variance $\langle \gamma_{\rm ex}^2(\theta) \rangle$ from $13.5 \times 10^6$ galaxies in KiDS-Legacy DR5 bins 4--6 \cite{Wright2025} compared against $\Lambda$CDM best-fit $\sigma_8 = 0.775$ ($\chi^2 = 1.12$), $\Lambda$CDM $\sigma_8 = 0.815$ ($\chi^2 = 5.10$), unsuppressed CDM at $S_{8,\rm lin} = 0.873$ ($\chi^2 = 19.44$), and RBIC $k_\star = 0.51\;h\,\mathrm{Mpc}^{-1}$ at $\sigma_8 = 0.850$ ($\chi^2 = 3.19$). Right: Summary of $S_8$ measurements across weak-lensing surveys compared with the RBIC linear chain.}
+    \label{fig:kids_shear}
+\end{figure}
+
+\section*{Consistency Check: Recovering $\Lambda$CDM in the Limit}
+\label{sec:limit}
+
+In the limit $\xi_{\rm RB} \to 0$ ($M_{\rm ratio} \to \infty$) together with $\gamma_T \to 0$ (constant $\chi$), Eq.~\eqref{eq:friedmann} reduces \emph{identically} to flat $\Lambda$CDM:
+\begin{equation}
+    E^2(z) = \Omega_m (1+z)^3 + \Omega_r (1+z)^4 + (1-\Omega_m-\Omega_r) \equiv E_{\Lambda\rm CDM}^2(z).
+    \label{eq:lcdm_limit}
+\end{equation}
+Likewise, in the high-mass limit $m_{\rm eff} \to \infty$ ($k_\star \to \infty$), standard CDM clustering is restored. Thus, flat $\Lambda$CDM is the exact zero-parameter boundary of the RBIC background parameterization.
+
+\section{Observational Constraints on Lorentz Invariance}
+\label{sec:constraints}
+
+While the condensate four-velocity $u^\mu$ defines a cosmological rest frame (analogous to the CMB rest frame), the BEC is a continuous fluid rather than a rigid crystalline spacetime lattice, so it does not induce anomalous high-energy vacuum dispersion $v(E) = c\,[1 \pm (E/E_{\rm QG})^n]$ for massless particles. Multi-messenger observations from GW170817 / GRB~170817A ($\Delta t = 1.74\;\mathrm{s}$) \cite{GW170817_2017, Monitor2017} constrain $|c_{\rm GW}/c - 1| \le 10^{-15}$, and Fermi-LAT GRB arrival times \cite{FermiLAT2009} rule out Planck-scale electromagnetic dispersion.
+
+\section{Testable Predictions and Constraints}
+\label{sec:predictions}
+
+\begin{enumerate}
+    \item \textbf{Effective Equation of State \& Phantom Crossing:} $w_{\rm eff}(z)$ transitions from $\approx -0.88$ at $z=0$ across $-1$ at $z_{\rm ph} \approx 0.51$, testable by DESI full-survey, Euclid, and Rubin/LSST.
+    \item \textbf{Small-Scale Power Cutoff Constraint:} Our 4-bin KiDS-Legacy DR5 shear variance check places a lower bound $k_\star \gtrsim 0.35\;h\,\mathrm{Mpc}^{-1}$ ($\lambda_J = 2\pi/k_\star \lesssim 18\;h^{-1}\mathrm{Mpc} \approx 26\;\mathrm{Mpc}$; $k_\star \le 0.25\;h\,\mathrm{Mpc}^{-1}$ is excluded at $\Delta\chi^2 \ge 8.6$, $>2.9\sigma$). Stronger constraints on the BEC mass fraction and self-interaction $\lambda_I$ will come from Euclid/Rubin cosmic shear and Lyman-$\alpha$ forest data.
+    \item \textbf{Non-Dispersive Propagation:} Massless propagation remains strictly non-dispersive ($v(E)=c$) at gamma-ray energies testable by CTA.
+\end{enumerate}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have presented the foundational MMT--BEC framework of Relativistic Bose Interval Cosmology, clarifying the conformal/Weyl nature of the scalar-sourced connection, deriving the high-density bounce scale $\ell_{\rm bounce}$ from the quantum-torsional Raychaudhuri identity (\ref{app:tmmt}), and motivating a Boltzmann horizon-condensate damping factor that preserves $\Lambda$CDM identically at $(\gamma_T, \xi_{\rm RB}) = (0,0)$. Tested against Cosmic Chronometers, DESI DR2 BAO, Planck 2018 priors, SDSS $f\sigma_8$, and Pantheon+, DES-SN5YR, and Union3 supernovae, the full two-parameter RBIC parameterization ($k=6$) matches $w_0w_a$CDM ($\Delta\mathrm{BIC} = +5.99, +4.36, -4.31$ vs.\ $\Lambda$CDM), while the calibrated one-parameter branch ($\gamma_T = 1.20\,\xi_{\rm RB}$, $z_{\rm ph} \approx 0.51$) achieves $\Delta\mathrm{BIC} = -1.41$ to $-7.74$ (outperforming constant-$w$ $w$CDM across all three suites). A 4-bin KiDS-Legacy DR5 shear variance check places a lower bound $k_\star \gtrsim 0.35\;h\,\mathrm{Mpc}^{-1}$ ($\lambda_J \lesssim 26\;\mathrm{Mpc}$) while remaining consistent with free-$\sigma_8$ $\Lambda$CDM.
+
+\section*{Data and Code Availability}
+All observational datasets used in this work are publicly available (Pantheon+SH0ES, DES-SN5YR, Union3, DESI DR2 BAO, Cosmic Chronometers, Planck 2018 distance priors, SDSS DR16 $f\sigma_8$, and KiDS-Legacy DR5). Reproducibility tables (\texttt{RBIC\_Foundations\_Proof\_Tables.xlsx} and CSV exports), the extracted KiDS-Legacy DR5 shear summary (\texttt{kids\_legacy\_summary.npz}), and standalone Python \texttt{emcee} and verification scripts are included in the accompanying \texttt{supplementary\_data/} archive and hosted at \url{https://github.com/shaktiraomani/RBIC_Foundations} (a permanent Zenodo DOI will be minted prior to final publication).
+
+\section*{Preprint Note}
+This article is an expanded and revised version of the preprint deposited at the SSRN Electronic Journal: \href{https://ssrn.com/abstract=7656002}{doi:10.2139/ssrn.7656002}.
+
+\appendix
+\section{Derivation of the Gradient-Torsion Raychaudhuri Term $\mathcal{T}_{\rm MMT}$}
+\label{app:tmmt}
+
+Starting from the metric-affine Ricci identity Eq.~\eqref{eq:ricci_id},
+\begin{equation}
+    \left(\nabla^{(\Gamma)}_\mu \nabla^{(\Gamma)}_\nu - \nabla^{(\Gamma)}_\nu \nabla^{(\Gamma)}_\mu\right) u^\lambda = R^\lambda_{\ \sigma\mu\nu}(\Gamma) u^\sigma - T^\sigma_{\ \mu\nu} \nabla^{(\Gamma)}_\sigma u^\lambda,
+\end{equation}
+we contract with $u^\nu$ and take the trace $\lambda = \mu$. Using $u^\nu \nabla^{(\Gamma)}_\nu u^\mu = a^\mu$ (plus the contorsion shift from Eq.~\eqref{eq:contorsion_def}), the left-hand side becomes $\frac{d\theta}{d\tau} + B_{\mu\nu}B^{\nu\mu} - \nabla_\mu a^\mu - \mathcal{T}_{\rm comp}$, where $B_{\mu\nu} \equiv \nabla^{(\Gamma)}_\nu u_\mu$ decomposes as
+\begin{equation}
+    B_{\mu\nu} = \frac{1}{3}\theta h_{\mu\nu} + \sigma_{\mu\nu} + \omega_{\mu\nu} - a_\mu u_\nu + K^\lambda_{\ \mu\nu} u_\lambda.
+\end{equation}
+For the pure-gradient contorsion $K^\lambda_{\ \mu\nu} = \frac{1}{2}(\delta^\lambda_\mu \partial_\nu \ln\chi - \delta^\lambda_\nu \partial_\mu \ln\chi + g^{\lambda\sigma}g_{\mu\rho}\partial_\sigma\ln\chi\,g^\rho_\nu)$, contracting with $u_\lambda$ yields
+\begin{equation}
+    K^\lambda_{\ \mu\nu} u_\lambda = \frac{1}{2}\left(u_\mu \partial_\nu\ln\chi - u_\nu \partial_\mu\ln\chi + g_{\mu\nu} u^\sigma\partial_\sigma\ln\chi\right).
+\end{equation}
+Substituting $T^\sigma_{\ \mu\nu} = \delta^\sigma_\mu\partial_\nu\ln\chi - \delta^\sigma_\nu\partial_\mu\ln\chi$ into the torsion term $-T^\sigma_{\ \mu\nu} u^\nu \nabla^{(\Gamma)}_\sigma u^\mu$ gives
+\begin{equation}
+    -T^\sigma_{\ \mu\nu} u^\nu B^\mu_{\ \sigma} = -\left(\theta\, u^\nu\partial_\nu\ln\chi - u^\nu \partial_\mu\ln\chi\, B^\mu_{\ \nu}\right).
+\end{equation}
+Collecting the cross-terms between $\frac{1}{3}\theta h_{\mu\nu}$ and $K^\lambda_{\ \mu\nu}u_\lambda$ in $B_{\mu\nu}B^{\nu\mu}$, the quadratic contorsion invariants, and the divergence of $K^\lambda_{\ \mu\nu}u_\lambda u^\nu$ produces Eq.~\eqref{eq:t_mmt}:
+\begin{equation}
+    \mathcal{T}_{\rm MMT} = \frac{2}{3}\theta\, u^\nu \partial_\nu \ln\chi + \frac{1}{2}(\partial_\mu\ln\chi)(\partial^\mu\ln\chi) - (u^\mu\partial_\mu\ln\chi)^2 + \nabla_\mu(h^{\mu\nu}\partial_\nu\ln\chi).
+\end{equation}
+Because $\partial_\mu \ln\chi$ and its proper-time derivative $u^\mu\partial_\mu\ln\chi$ can take either sign depending on cosmological epoch, $\mathcal{T}_{\rm MMT}$ is sign-indefinite in general.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}
